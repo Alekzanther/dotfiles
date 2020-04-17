@@ -7,6 +7,7 @@ No-hassle backups/migrations/restore/tracking of such files.
 - Zsh
 - OhMyZsh: https://ohmyz.sh/
 - NeoVim: https://neovim.io/
+- vim-plug: https://github.com/junegunn/vim-plug
 - Zinit (zsh plugin manager): https://github.com/zdharma/zinit
 - MesloLGS NF Font (Set this as default in your terminal app): https://github.com/romkatv/powerlevel10k#manual-font-installation
 
