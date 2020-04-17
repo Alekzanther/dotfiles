@@ -8,4 +8,4 @@ No-hassle backups/migrations/restore/tracking of such files.
 - OhMyZsh: https://ohmyz.sh/
 - NeoVim: https://neovim.io/
 - Zinit (zsh plugin manager): https://github.com/zdharma/zinit
-- MesloLGS NF Font: https://github.com/romkatv/powerlevel10k#manual-font-installation
+- MesloLGS NF Font (Set this as default in your terminal app): https://github.com/romkatv/powerlevel10k#manual-font-installation
