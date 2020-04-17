@@ -13,7 +13,7 @@ No-hassle backups/migrations/restore/tracking of such files.
 ## Install these on a new system
 Based on https://www.atlassian.com/git/tutorials/dotfiles
 
-1. Run this ignore files in repo to avoid redundancies: 
+1. Run this to avoid redundancies: 
 ```
 echo ".dotfiles" >> .gitignore
 ```
