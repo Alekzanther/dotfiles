@@ -132,4 +132,5 @@ zinit ice depth=1; zinit light romkatv/powerlevel10k
 # dark version
 #zinit snippet https://github.com/sainnhe/dotfiles/raw/master/.zsh-theme-gruvbox-material-dark
 
-
+# vim keybindings
+# bindkey -v
