@@ -1,28 +1,107 @@
-" Specify a directory for plugins
-" - For Neovim: stdpath('data') . '/plugged'
-" - Avoid using standard Vim directory names like 'plugin'
-call plug#begin()
-
-" Make sure you use single quotes
-
-" Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
-" Plug 'junegunn/vim-easy-align'
-
-" Any valid git URL is allowed
-" Plug 'https://github.com/junegunn/vim-github-dashboard.git'
-
-" Multiple Plug commands can be written in a single line using | separators
-
-" On-demand loading
-Plug 'scrooloose/nerdtree'
-Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
-
-Plug 'morhetz/gruvbox'
-
-" Initialize plugin system
+" *******************************
+" PLUGINS ***********************
+" *******************************
+call plug#begin("~/.vim/plugged")
+  Plug 'dracula/vim'
+  Plug 'scrooloose/nerdtree'
+  Plug 'ryanoasis/vim-devicons'
+  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+  Plug 'junegunn/fzf.vim'
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"  Plug 'rbong/vim-crystalline'
+  Plug 'sheerun/vim-polyglot'
+  Plug 'mhinz/vim-startify'
 call plug#end()
 
-set relativenumber
-colorscheme gruvbox
-set background=dark
+" *******************************
+" CUSTOM CONFIGS ****************
+" *******************************
 
+" GENERAL ************************* 
+" Absolute line numbers
+"set number
+
+" Hybrid line number
+:set number relativenumber
+:set nu rnu
+
+" Case insensitive searching
+set ignorecase
+set smartcase
+
+" No wrapping of text
+set nowrap           " do not automatically wrap on load
+set formatoptions-=t " do not automatically wrap text when typing
+
+" Remove search highlighting on second <Enter>
+nnoremap <silent> <CR> :noh<CR><CR>
+
+" THEME ************************* 
+if (has("termguicolors"))
+ set termguicolors
+endif
+syntax enable
+colorscheme dracula
+
+" NERDTree ***********************
+let g:NERDTreeShowHidden = 1
+let g:NERDTreeMinimalUI = 1
+let g:NERDTreeIgnore = []
+let g:NERDTreeStatusline = '%#NonText#'
+" Automaticaly close nvim if NERDTree is only thing left open
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" Toggle
+nnoremap <silent> <C-b> :NERDTreeToggle<CR>
+
+" TERMINAL ***********************
+" open new split panes to right and below
+set splitright
+set splitbelow
+" turn terminal to normal mode with escape
+tnoremap <Esc> <C-\><C-n>
+" start terminal in insert mode
+au BufEnter * if &buftype == 'terminal' | :startinsert | endif
+" open terminal on ctrl+n
+function! OpenTerminal()
+  split term://zsh
+  resize 10
+endfunction
+nnoremap <c-n> :call OpenTerminal()<CR>
+" use alt+hjkl to move between split/vsplit panels
+tnoremap <A-h> <C-\><C-n><C-w>h
+tnoremap <A-j> <C-\><C-n><C-w>j
+tnoremap <A-k> <C-\><C-n><C-w>k
+tnoremap <A-l> <C-\><C-n><C-w>l
+nnoremap <A-h> <C-w>h
+nnoremap <A-j> <C-w>j
+nnoremap <A-k> <C-w>k
+nnoremap <A-l> <C-w>l
+
+" FUZZY SEARCH *******************
+nnoremap <C-p> :FZF<CR>
+let g:fzf_action = {
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-s': 'split',
+  \ 'ctrl-v': 'vsplit'
+  \}
+
+" VIM STATUS LINE ****************
+" set tabline=%!crystalline#bufferline()
+set showtabline=2
+" set noshowmode
+set noruler
+set laststatus=0
+set noshowcmd
+
+" START SCREEN *******************
+let g:startify_lists = [
+  \ { 'type': 'files',     'header': ['   Recent']            },
+  \ { 'type': 'dir',       'header': ['   Recent '. getcwd()] },
+  \ { 'type': 'sessions',  'header': ['   Sessions']       },
+  \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
+  \ { 'type': 'commands',  'header': ['   Commands']       },
+  \ ]
+
+
+let g:startify_custom_header =
+  \ 'startify#pad(startify#fortune#boxed())'

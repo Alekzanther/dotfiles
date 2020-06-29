@@ -134,3 +134,5 @@ zinit ice depth=1; zinit light romkatv/powerlevel10k
 
 # vim keybindings
 # bindkey -v
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

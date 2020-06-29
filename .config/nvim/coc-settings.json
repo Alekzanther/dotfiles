@@ -1,0 +1,8 @@
+{
+  "coc.preferences.formatOnSaveFiletypes": [
+    "javascript",
+    "json",
+    "javascriptreact"
+  ],
+  "eslint.filetypes": ["javascript", "javascriptreact"]
+}
