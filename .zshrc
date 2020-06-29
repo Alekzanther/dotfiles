@@ -75,7 +75,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(z git docker docker-compose dotnet node npm rust ubuntu cp sudo systemd vagrant zsh_reload)
+plugins=(git docker docker-compose dotnet node npm rust ubuntu cp sudo systemd vagrant zsh_reload)
 
 source $ZSH/oh-my-zsh.sh
 
