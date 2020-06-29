@@ -2,7 +2,8 @@
 " PLUGINS ***********************
 " *******************************
 call plug#begin("~/.vim/plugged")
-  Plug 'dracula/vim'
+"  Plug 'dracula/vim'
+  Plug 'morhetz/gruvbox'
   Plug 'scrooloose/nerdtree'
   Plug 'ryanoasis/vim-devicons'
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -41,7 +42,7 @@ if (has("termguicolors"))
  set termguicolors
 endif
 syntax enable
-colorscheme dracula
+colorscheme gruvbox
 
 " NERDTree ***********************
 let g:NERDTreeShowHidden = 1
