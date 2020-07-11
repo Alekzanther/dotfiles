@@ -19,8 +19,8 @@ call plug#end()
 " *******************************
 
 " GENERAL ************************* 
-" Absolute line numbers
-"set number
+" Automatically set current working dir to the current file dir
+set autochdir
 
 " Hybrid line number
 :set number relativenumber
