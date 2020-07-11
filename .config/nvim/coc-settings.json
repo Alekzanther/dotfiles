@@ -3,7 +3,8 @@
     "javascript",
     "json",
     "javascriptreact",
-    "python"
+    "python",
+    "rust"
   ],
-  "eslint.filetypes": ["javascript", "javascriptreact"]
+  "eslint.filetypes": ["rust", "javascript", "javascriptreact"]
 }
