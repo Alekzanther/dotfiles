@@ -22,6 +22,9 @@ call plug#end()
 " Absolute line numbers
 "set number
 
+" Homogenous clipboard 
+set clipboard=unnamedplus
+
 " Hybrid line number
 :set number relativenumber
 :set nu rnu

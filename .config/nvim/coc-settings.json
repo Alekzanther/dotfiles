@@ -3,7 +3,8 @@
     "javascript",
     "json",
     "javascriptreact",
-    "python"
+    "python",
+    "java"
   ],
   "eslint.filetypes": ["javascript", "javascriptreact"]
 }
