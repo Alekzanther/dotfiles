@@ -98,11 +98,11 @@ let g:fzf_action = {
 
 " VIM STATUS LINE ****************
 " set tabline=%!crystalline#bufferline()
-set showtabline=2
+" set showtabline=2
 " set noshowmode
-set noruler
-set laststatus=0
-set noshowcmd
+" set noruler
+" set laststatus=0
+" set noshowcmd
 
 " START SCREEN *******************
 let g:startify_lists = [
