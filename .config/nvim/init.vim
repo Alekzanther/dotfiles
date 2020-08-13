@@ -12,6 +12,8 @@ call plug#begin("~/.vim/plugged")
 "  Plug 'rbong/vim-crystalline'
   Plug 'sheerun/vim-polyglot'
   Plug 'mhinz/vim-startify'
+  Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 
 " *******************************
@@ -39,6 +41,11 @@ set formatoptions-=t " do not automatically wrap text when typing
 
 " Remove search highlighting on second <Enter>
 nnoremap <silent> <CR> :noh<CR><CR>
+
+" airline statusbar
+let g:airline_statusline_ontop=1
+let g:airline_powerline_fonts = 1
+let g:airline_theme='solarized'
 
 " THEME ************************* 
 if (has("termguicolors"))
