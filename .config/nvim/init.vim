@@ -57,6 +57,11 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 " Toggle
 nnoremap <silent> <C-b> :NERDTreeToggle<CR>
 
+" RIPGREP ************************
+set grepprg=rg\ --vimgrep\ --smart-case\ --hidden\ --follow
+
+nnoremap <A-f> :rg<CR>
+
 " TERMINAL ***********************
 " open new split panes to right and below
 set splitright
@@ -80,6 +85,7 @@ nnoremap <A-h> <C-w>h
 nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
+
 
 " FUZZY SEARCH *******************
 nnoremap <C-p> :FZF<CR>
