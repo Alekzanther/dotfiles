@@ -58,9 +58,10 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 nnoremap <silent> <C-b> :NERDTreeToggle<CR>
 
 " RIPGREP ************************
-set grepprg=rg\ --vimgrep\ --smart-case\ --hidden\ --follow
-
-nnoremap <A-f> :rg<CR>
+set grepprg=rg\ --vimgrep\ --smart-case\ --follow
+nnoremap <A-f> :Rg<CR>
+" the following removes file name results when searching in files
+command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
 
 " TERMINAL ***********************
 " open new split panes to right and below
