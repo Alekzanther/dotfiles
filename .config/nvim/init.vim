@@ -43,9 +43,10 @@ set formatoptions-=t " do not automatically wrap text when typing
 nnoremap <silent> <CR> :noh<CR><CR>
 
 " airline statusbar
+let g:airline#extensions#tabline#enabled = 1
 let g:airline_statusline_ontop=1
 let g:airline_powerline_fonts = 1
-let g:airline_theme='solarized'
+let g:airline_theme='zenburn'
 
 " THEME ************************* 
 if (has("termguicolors"))
@@ -105,11 +106,11 @@ let g:fzf_action = {
 
 " VIM STATUS LINE ****************
 " set tabline=%!crystalline#bufferline()
-" set showtabline=2
-" set noshowmode
-" set noruler
-" set laststatus=0
-" set noshowcmd
+set noshowmode
+set noruler
+set laststatus=0
+set noshowcmd
+set cmdheight=1
 
 " START SCREEN *******************
 let g:startify_lists = [
