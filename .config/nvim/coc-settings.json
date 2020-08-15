@@ -7,5 +7,6 @@
     "java",
     "rust"
   ],
+  "coc.preferences.jumpCommand": "drop",
   "eslint.filetypes": ["rust", "javascript", "javascriptreact"]
 }

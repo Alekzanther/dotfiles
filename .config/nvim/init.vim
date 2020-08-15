@@ -65,11 +65,92 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 " Toggle
 nnoremap <silent> <C-b> :NERDTreeToggle<CR>
 
+" FUZZY SEARCH *******************************************************
+let g:fzf_action = {
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-c': 'split',
+  \ 'ctrl-v': 'vsplit'
+  \}
+let $FZF_DEFAULT_OPTS='--layout=reverse --margin=1,2 --info=hidden' 
+
+
+" Keybindings
+nnoremap <silent> <C-p> :FindFile<CR>
+nnoremap <silent> <A-f> :SearchInAllFiles<cr>
+
+" Commands
+command! -bang -nargs=? -complete=dir FindFile call fzf#vim#files(<q-args>, fzf#vim#with_preview({'options': '--prompt 🔍'}), <bang>0)
+command! -nargs=* -bang SearchInAllFiles call RipgrepFzf(<q-args>, <bang>0)
+
+" Advanced ripgrep integration
+" https://github.com/junegunn/fzf.vim/#example-advanced-ripgrep-integration
+" --column and --line-number NEEDS to be set or it won't work properly
+function! RipgrepFzf(query, fullscreen)
+  let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case -- %s || true'
+  let initial_command = printf(command_fmt, shellescape(a:query))
+  let reload_command = printf(command_fmt, '{q}')
+  let spec = {'options': ['--prompt', '🔍', '--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
+  call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
+endfunction
+
+" Hide status line when fzf is active
+autocmd! FileType fzf set laststatus=0 noshowmode noruler | autocmd BufLeave <buffer> set laststatus=2 showmode ruler
+
+" Open FZF in floating window
+let g:fzf_layout = { 'window': 'call CreateCenteredFloatingWindow()' }
+
+
+" FLOATING WINDOW ***************************************************
+function! CreateCenteredFloatingWindow()
+    let width = min([&columns - 4, max([80, &columns - 20])])
+    let height = min([&lines - 4, max([20, &lines - 10])])
+    let top = ((&lines - height) / 2) - 1
+    let left = (&columns - width) / 2
+    let opts = {'relative': 'editor', 'row': top, 'col': left, 'width': width, 'height': height, 'style': 'minimal'}
+
+    let top = "╭" . repeat("─", width - 2) . "╮"
+    let mid = "│" . repeat(" ", width - 2) . "│"
+    let bot = "╰" . repeat("─", width - 2) . "╯"
+    let lines = [top] + repeat([mid], height - 2) + [bot]
+    let s:buf = nvim_create_buf(v:false, v:true)
+    call nvim_buf_set_lines(s:buf, 0, -1, v:true, lines)
+    let win1 = nvim_open_win(s:buf, v:true, opts)
+    set winhl=Normal:Floating
+    let opts.row += 1
+    let opts.height -= 2
+    let opts.col += 2
+    let opts.width -= 4
+    let win2 = nvim_open_win(nvim_create_buf(v:false, v:true), v:true, opts)
+    au BufWipeout <buffer> exe 'bw '.s:buf
+    " Close border-window AND buffer window on <Esc>
+    " https://www.reddit.com/r/neovim/comments/ekzhme/help_wanted_changing_keymap_for_floating_window/
+    tnoremap <silent> <buffer> <Esc> <C-\><C-n><CR>:bw!<CR>
+endfunction
+
+function! ToggleTerm(cmd)
+    if empty(bufname(a:cmd))
+        call CreateCenteredFloatingWindow()
+        call termopen(a:cmd, { 'on_exit': function('OnTermExit') })
+    else
+        bwipeout!
+    endif
+endfunction
+
+function! OnTermExit(job_id, code, event) dict
+    if a:code == 0
+        bwipeout!
+    endif
+endfunction
+
+" Cool programs started in floting window
+nnoremap <silent> <F1> :call ToggleTerm('lazygit')<CR> i
+nnoremap <silent> <F2> :call ToggleTerm('htop')<CR> i
 " RIPGREP ************************
 set grepprg=rg\ --vimgrep\ --smart-case\ --follow
 nnoremap <A-f> :Rg<CR>
 " the following removes file name results when searching in files
 command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
+
 
 " TERMINAL ***********************
 " open new split panes to right and below
@@ -112,6 +193,20 @@ set laststatus=0
 set noshowcmd
 set cmdheight=1
 
+" COC Go to definition
+nmap <silent> gd <Plug>(coc-definition)
+
+" COC AUTO COMPLETE SUGGESTION WITH <TAB> ***************************
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+
+inoremap <silent><expr> <Tab>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<Tab>" :
+      \ coc#refresh()
+
 " START SCREEN *******************
 let g:startify_lists = [
   \ { 'type': 'files',     'header': ['   Recent']            },
@@ -124,3 +219,4 @@ let g:startify_lists = [
 
 let g:startify_custom_header =
   \ 'startify#pad(startify#fortune#boxed())'
+
