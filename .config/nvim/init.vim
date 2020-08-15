@@ -23,6 +23,8 @@ call plug#end()
 " GENERAL ************************* 
 " Automatically set current working dir to the current file dir
 set autochdir
+" enable mouse
+set mouse=a
 
 " Homogenous clipboard 
 set clipboard=unnamedplus
@@ -144,7 +146,7 @@ endfunction
 
 " Cool programs started in floting window
 nnoremap <silent> <F1> :call ToggleTerm('lazygit')<CR> i
-nnoremap <silent> <F2> :call ToggleTerm('htop')<CR> i
+nnoremap <silent> <F2> :call ToggleTerm('ytop')<CR> i
 " RIPGREP ************************
 set grepprg=rg\ --vimgrep\ --smart-case\ --follow
 nnoremap <A-f> :Rg<CR>
@@ -175,15 +177,6 @@ nnoremap <A-h> <C-w>h
 nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
-
-
-" FUZZY SEARCH *******************
-nnoremap <C-p> :FZF<CR>
-let g:fzf_action = {
-  \ 'ctrl-t': 'tab split',
-  \ 'ctrl-s': 'split',
-  \ 'ctrl-v': 'vsplit'
-  \}
 
 " VIM STATUS LINE ****************
 " set tabline=%!crystalline#bufferline()
