@@ -46,7 +46,7 @@ nnoremap <silent> <CR> :noh<CR><CR>
 
 " airline statusbar
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_statusline_ontop=1
+" let g:airline_statusline_ontop=1
 let g:airline_powerline_fonts = 1
 let g:airline_theme='zenburn'
 
