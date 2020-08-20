@@ -188,6 +188,9 @@ set cmdheight=1
 
 " COC Go to definition
 nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
 
 " COC AUTO COMPLETE SUGGESTION WITH <TAB> ***************************
 function! s:check_back_space() abort
