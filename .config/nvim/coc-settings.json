@@ -9,5 +9,17 @@
     "csharp"
   ],
   "coc.preferences.jumpCommand": "drop",
-  "eslint.filetypes": ["rust", "javascript", "javascriptreact", "csharp"]
+  "eslint.filetypes": ["rust", "javascript", "javascriptreact", "csharp"],
+  "eslint.enable": false,
+	"pairs.enableCharacters": [
+		"(",
+		"[",
+		"{",
+		"'",
+		"\"",
+		"`"
+	],
+  "diagnostic.errorSign": "🔥",
+  "diagnostic.warningSign": "🦄",
+  "diagnostic.infoSign": "✨"
 }
