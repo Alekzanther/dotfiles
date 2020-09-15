@@ -22,9 +22,13 @@ call plug#end()
 
 " GENERAL ************************* 
 " Automatically set current working dir to the current file dir
-set autochdir
+" set autochdir
+
 " enable mouse
 set mouse=a
+
+" automatically jump between tags (<div></div>, {} etc with %)
+runtime macros/matchit.vim
 
 " Homogenous clipboard 
 set clipboard=unnamedplus
@@ -66,6 +70,8 @@ let g:NERDTreeStatusline = '%#NonText#'
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 " Toggle
 nnoremap <silent> <C-b> :NERDTreeToggle<CR>
+let NERDTreeShowLineNumbers=1
+autocmd FileType nerdtree setlocal relativenumber
 
 " FUZZY SEARCH *******************************************************
 let g:fzf_action = {
