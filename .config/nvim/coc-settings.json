@@ -6,19 +6,25 @@
     "python",
     "java",
     "rust",
-    "csharp"
+    "csharp",
+    "blaze",
+    "react",
+    "handlebars"
   ],
+
+  "prettier.tabWidth": 2,
   "coc.preferences.jumpCommand": "drop",
-  "eslint.filetypes": ["rust", "javascript", "javascriptreact", "csharp"],
+  "eslint.filetypes": [
+    "blaze",
+    "handlebars",
+    "rust",
+    "javascript",
+    "javascriptreact",
+    "csharp",
+    "react"
+  ],
   "eslint.enable": false,
-	"pairs.enableCharacters": [
-		"(",
-		"[",
-		"{",
-		"'",
-		"\"",
-		"`"
-	],
+  "pairs.enableCharacters": ["(", "[", "{", "'", "\"", "`"],
   "diagnostic.errorSign": "🔥",
   "diagnostic.warningSign": "🦄",
   "diagnostic.infoSign": "✨"

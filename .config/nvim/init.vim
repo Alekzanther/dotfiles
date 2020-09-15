@@ -22,9 +22,13 @@ call plug#end()
 
 " GENERAL ************************* 
 " Automatically set current working dir to the current file dir
-set autochdir
+" set autochdir
+
 " enable mouse
 set mouse=a
+
+" automatically jump between tags (<div></div>, {} etc with %)
+runtime macros/matchit.vim
 
 " Homogenous clipboard 
 set clipboard=unnamedplus
