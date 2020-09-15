@@ -18,6 +18,9 @@ for_window [class="^.*"] border pixel 2
 gaps inner $inner_gaps
 gaps outer $outer_gaps
 smart_gaps on
+#rounded_corners 15
+
+### ROUNDED
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -167,20 +170,20 @@ for_window [class="Steam"] floating enable
 for_window [class="Mumble"] floating enable
 
 # set background
-exec --no-startup-id feh --bg-fill "~/cloud/Simplistic Backgrounds/vs6b9rv20wf01.jpg"
+exec --no-startup-id feh --bg-fill ~/cloud/Simplistic\ Backgrounds/vs6b9rv20wf01.jpg
 
 # launch polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
-# launch compton
-exec_always --no-startup-id compton -i 0.75 -b
+# launch picom (compositor)
+exec_always --no-startup-id picom --experimental-backends
 
-# launch dunst
+# launch dunst (notification)
 exec_always --no-statup-id dunst -config ~/.config/dunst/dunstrc
 
 ### BORDERS AND STUFF ###
 set $bg-color 	         #383C4A
-set $bd-color		 #FF0069
+set $bd-color		 #383C4A
 set $inactive-bg-color   #383C4A
 set $inactive-bd-color	 #383C4A
 set $text-color          #f3f4f5
