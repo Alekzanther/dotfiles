@@ -17,7 +17,7 @@ set $ws10 "10"
 for_window [class="^.*"] border pixel 2
 gaps inner $inner_gaps
 gaps outer $outer_gaps
-smart_gaps on
+#smart_gaps on
 #rounded_corners 15
 
 ### ROUNDED
