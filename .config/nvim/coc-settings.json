@@ -9,7 +9,8 @@
     "csharp",
     "blaze",
     "react",
-    "handlebars"
+    "handlebars",
+    "html"
   ],
 
   "prettier.tabWidth": 2,
@@ -21,7 +22,8 @@
     "javascript",
     "javascriptreact",
     "csharp",
-    "react"
+    "react",
+    "html"
   ],
   "eslint.enable": false,
   "pairs.enableCharacters": ["(", "[", "{", "'", "\"", "`"],
