@@ -1,6 +1,13 @@
 " *******************************
 " PLUGINS ***********************
 " *******************************
+" The following installs vim-plug automatically if it's not present
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent execute "!curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+  autocmd VimEnter * PlugInstall | source $MYVIMRC
+endif
+
+" PLUGINS
 call plug#begin("~/.vim/plugged")
 "  Plug 'dracula/vim'
   Plug 'morhetz/gruvbox'
@@ -14,6 +21,7 @@ call plug#begin("~/.vim/plugged")
   Plug 'mhinz/vim-startify'
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
+  Plug 'thaerkh/vim-workspace'
 call plug#end()
 
 " *******************************
@@ -47,6 +55,10 @@ set formatoptions-=t " do not automatically wrap text when typing
 
 " Remove search highlighting on second <Enter>
 nnoremap <silent> <CR> :noh<CR><CR>
+
+" toggle workspace session handling
+let g:workspace_session_directory = $HOME . '/.vim/sessions/'
+nnoremap <A-s> :ToggleWorkspace<CR>
 
 " airline statusbar
 let g:airline#extensions#tabline#enabled = 1
