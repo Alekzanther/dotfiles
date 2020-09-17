@@ -20,7 +20,6 @@ gaps outer $outer_gaps
 #smart_gaps on
 #rounded_corners 15
 
-### ROUNDED
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -34,6 +33,9 @@ bindsym $mod+Return exec konsole
 
 # kill focused window
 bindsym $mod+Shift+q kill
+
+# mod+tab "alt+tab" behaviour
+bindsym $mod+Tab workspace back_and_forth
 
 # start dmenu (a program launcher)
 #bindsym $mod+d exec dmenu_run
