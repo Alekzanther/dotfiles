@@ -183,6 +183,12 @@ exec_always --no-startup-id picom --experimental-backends
 # launch dunst (notification)
 exec_always --no-statup-id dunst -config ~/.config/dunst/dunstrc
 
+# redshift 
+exec --no-startup-id redshift-gtk
+
+# nextcloud sync
+exec --no-startup-id nextcloud 
+
 ### BORDERS AND STUFF ###
 set $bg-color 	         #383C4A
 set $bd-color		 #383C4A
@@ -204,8 +210,8 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #d
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 
 # Sreen brightness controls
-bindsym XF86MonBrightnessUp exec brightnessctl -d amdgpu_bl0 s +10% # increase screen brightness
-bindsym XF86MonBrightnessDown exec brightnessctl -d amdgpu_bl0 s 10%- # decrease screen brightnes
+bindsym XF86MonBrightnessUp exec brightnessctl -d amdgpu_bl0 s +5% # increase screen brightness
+bindsym XF86MonBrightnessDown exec brightnessctl -d amdgpu_bl0 s 5%- # decrease screen brightnes
 
 # Media player controls
 bindsym XF86AudioPlay exec playerctl play-pause
