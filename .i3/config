@@ -17,9 +17,6 @@ set $ws10 "10"
 for_window [class="^.*"] border pixel 2
 gaps inner $inner_gaps
 gaps outer $outer_gaps
-#smart_gaps on
-#rounded_corners 15
-
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -188,6 +185,9 @@ exec --no-startup-id redshift-gtk
 
 # nextcloud sync
 exec --no-startup-id nextcloud 
+
+# flameshot
+exec --no-startup-id flameshot
 
 ### BORDERS AND STUFF ###
 set $bg-color 	         #383C4A
