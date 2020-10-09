@@ -10,7 +10,9 @@
     "blaze",
     "react",
     "handlebars",
-    "html"
+    "html",
+    "css",
+    "scss"
   ],
   "prettier.printWidth": 100,
   "prettier.jsxBracketSameLine": true,
