@@ -1,5 +1,5 @@
 ### BASIC DEFINITIONS ###
-set $inner_gaps 25
+set $inner_gaps 20
 set $outer_gaps 0
 set $mod Mod4
 set $ws1 "1"
@@ -17,9 +17,6 @@ set $ws10 "10"
 for_window [class="^.*"] border pixel 2
 gaps inner $inner_gaps
 gaps outer $outer_gaps
-#smart_gaps on
-#rounded_corners 15
-
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -136,16 +133,16 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym h resize grow width 10 px or 10 ppt
         bindsym k resize grow height 10 px or 10 ppt
         bindsym j resize shrink height 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
+        bindsym l resize shrink width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Left resize grow width 10 px or 10 ppt
         bindsym Down resize grow height 10 px or 10 ppt
         bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+        bindsym Right resize shrink width 10 px or 10 ppt
 
         # back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"
@@ -183,6 +180,15 @@ exec_always --no-startup-id picom --experimental-backends
 # launch dunst (notification)
 exec_always --no-statup-id dunst -config ~/.config/dunst/dunstrc
 
+# redshift 
+exec --no-startup-id redshift-gtk
+
+# nextcloud sync
+exec --no-startup-id nextcloud 
+
+# flameshot
+exec --no-startup-id flameshot
+
 ### BORDERS AND STUFF ###
 set $bg-color 	         #383C4A
 set $bd-color		 #383C4A
@@ -204,8 +210,8 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #d
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 
 # Sreen brightness controls
-bindsym XF86MonBrightnessUp exec brightnessctl -d amdgpu_bl0 s +10% # increase screen brightness
-bindsym XF86MonBrightnessDown exec brightnessctl -d amdgpu_bl0 s 10%- # decrease screen brightnes
+bindsym XF86MonBrightnessUp exec brightnessctl -d amdgpu_bl0 s +5% # increase screen brightness
+bindsym XF86MonBrightnessDown exec brightnessctl -d amdgpu_bl0 s 5%- # decrease screen brightnes
 
 # Media player controls
 bindsym XF86AudioPlay exec playerctl play-pause
