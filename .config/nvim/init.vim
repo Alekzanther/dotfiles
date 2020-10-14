@@ -107,7 +107,7 @@ let $FZF_DEFAULT_OPTS='--layout=reverse --margin=1,2 --info=hidden'
 
 
 " Keybindings
-nnoremap <silent> <C-p> :FindFile<CR>
+nnoremap <silent> <A-p> :FindFile<CR>
 nnoremap <silent> <A-f> :SearchInAllFiles<cr>
 
 " Commands
