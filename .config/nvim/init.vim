@@ -107,8 +107,8 @@ let $FZF_DEFAULT_OPTS='--layout=reverse --margin=1,2 --info=hidden'
 
 
 " Keybindings
-nnoremap <silent> <A-p> :FindFile<CR>
-nnoremap <silent> <A-f> :SearchInAllFiles<cr>
+nnoremap <silent> <C-p> :FindFile<CR>
+nnoremap <silent> <C-f> :SearchInAllFiles<cr>
 
 " Commands
 command! -bang -nargs=? -complete=dir FindFile call fzf#vim#files(<q-args>, fzf#vim#with_preview({'options': '--prompt 🔍'}), <bang>0)
