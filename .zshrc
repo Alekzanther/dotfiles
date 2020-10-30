@@ -83,6 +83,7 @@ source $ZSH/oh-my-zsh.sh
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias vim=nvim
 alias nano=nvim
+alias lg=lazygit
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
