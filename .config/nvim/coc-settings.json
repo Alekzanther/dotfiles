@@ -12,8 +12,11 @@
     "handlebars",
     "html",
     "css",
-    "scss"
+    "scss",
+    "typescript",
+    "typescriptreact"
   ],
+  "prettier.eslintIntegration": false,
   "prettier.printWidth": 100,
   "prettier.jsxBracketSameLine": true,
   "prettier.tabWidth": 2,
@@ -26,7 +29,9 @@
     "javascriptreact",
     "csharp",
     "react",
-    "html"
+    "html",
+    "typescript",
+    "typescriptreact"
   ],
   "eslint.enable": false,
   "pairs.enableCharacters": ["(", "[", "{", "'", "\"", "`"],
