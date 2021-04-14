@@ -16,11 +16,13 @@
     "typescript",
     "typescriptreact"
   ],
-  "prettier.eslintIntegration": false,
+  "prettier.eslintIntegration": true,
+  "prettier.endOfLine": "auto",
   "prettier.printWidth": 100,
   "prettier.jsxBracketSameLine": true,
   "prettier.tabWidth": 2,
   "coc.preferences.jumpCommand": "drop",
+  "eslint.autoFixOnSave": true,
   "eslint.filetypes": [
     "blaze",
     "handlebars",
@@ -33,7 +35,7 @@
     "typescript",
     "typescriptreact"
   ],
-  "eslint.enable": false,
+  "eslint.enable": true,
   "pairs.enableCharacters": ["(", "[", "{", "'", "\"", "`"],
   "diagnostic.errorSign": "🔥",
   "diagnostic.warningSign": "🦄",
