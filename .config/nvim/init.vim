@@ -35,6 +35,7 @@ call plug#end()
 
 " enable mouse
 set mouse=a
+let mapleader = ' '
 
 " automatically jump between tags (<div></div>, {} etc with %)
 runtime macros/matchit.vim
@@ -97,13 +98,51 @@ nnoremap <silent> <C-b> :NERDTreeToggle<CR>
 let NERDTreeShowLineNumbers=1
 autocmd FileType nerdtree setlocal relativenumber
 
+" QUICKFIX LIST *****************************
+nnoremap <C-k> :cnext<CR>zz
+nnoremap <C-j> :cprev<CR>zz
+nnoremap <leader>k :lnext<CR>zz
+nnoremap <leader>j :lprev<CR>zz
+nnoremap <C-q> :call ToggleQFList(1)<CR>
+nnoremap <leader>q :call ToggleQFList(0)<CR>
+
+let g:status_qf_l = 0
+let g:status_qf_g = 0
+
+fun! ToggleQFList(global)
+    if a:global
+        if g:status_qf_g == 1
+            let g:status_qf_g = 0
+            cclose
+        else
+            let g:status_qf_g = 1
+            copen
+        end
+    else
+        if g:status_qf_l == 1
+            let g:status_qf_l = 0
+            lclose
+        else
+            let g:status_qf_l = 1
+            lopen
+        end
+    endif
+endfun
+
 " FUZZY SEARCH *******************************************************
+function! s:build_quickfix_list(lines)
+  call setqflist(map(copy(a:lines), '{ "filename": v:val }'))
+  copen
+  cc
+endfunction
+
 let g:fzf_action = {
+  \ 'ctrl-q': function('s:build_quickfix_list'),
   \ 'ctrl-t': 'tab split',
   \ 'ctrl-c': 'split',
   \ 'ctrl-v': 'vsplit'
   \}
-let $FZF_DEFAULT_OPTS='--layout=reverse --margin=1,2 --info=hidden' 
+let $FZF_DEFAULT_OPTS='--layout=reverse --margin=1,2 --info=hidden --bind ctrl-a:select-all' 
 
 
 " Keybindings
