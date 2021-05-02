@@ -10,6 +10,7 @@ endif
 " PLUGINS
 call plug#begin("~/.vim/plugged")
 "  Plug 'dracula/vim'
+  Plug 'tveskag/nvim-blame-line'
   Plug 'morhetz/gruvbox'
   Plug 'scrooloose/nerdtree'
   Plug 'ryanoasis/vim-devicons'
@@ -285,3 +286,4 @@ let g:startify_lists = [
 let g:startify_custom_header =
   \ 'startify#pad(startify#fortune#boxed())'
 
+nnoremap <silent> <C-g> :ToggleBlameLine<CR>

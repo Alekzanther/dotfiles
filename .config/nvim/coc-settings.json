@@ -16,7 +16,7 @@
     "typescript",
     "typescriptreact"
   ],
-  "prettier.eslintIntegration": false,
+  "prettier.eslintIntegration": true,
   "prettier.printWidth": 100,
   "prettier.jsxBracketSameLine": true,
   "prettier.tabWidth": 2,
@@ -33,7 +33,7 @@
     "typescript",
     "typescriptreact"
   ],
-  "eslint.enable": false,
+  "eslint.enable": true,
   "pairs.enableCharacters": ["(", "[", "{", "'", "\"", "`"],
   "diagnostic.errorSign": "🔥",
   "diagnostic.warningSign": "🦄",
