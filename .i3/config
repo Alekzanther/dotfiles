@@ -195,9 +195,8 @@ exec --no-startup-id flameshot
 # nm-applet
 exec --no-startup-id nm-applet
 
-# replace caps lock with esc
-exec_always xmodmap -e "clear lock" #disable caps lock switch
-exec_always xmodmap -e "keysym Caps_Lock = Escape" #set caps_lock as escape
+# keyboard layout switcher
+exec_always setxkbmap -layout us,se -option 'grp:alt_shift_toggle' -option 'caps:escape' 
 
 ### BORDERS AND STUFF ###
 set $bg-color 	         #383C4A
