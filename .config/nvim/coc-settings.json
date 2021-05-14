@@ -21,6 +21,8 @@
   "prettier.jsxBracketSameLine": true,
   "prettier.tabWidth": 2,
   "coc.preferences.jumpCommand": "drop",
+  "coc.preferences.diagnostic.locationlist": true,
+  "coc.preferences.useQuickfixForLocations": true,
   "eslint.filetypes": [
     "blaze",
     "handlebars",
@@ -37,5 +39,6 @@
   "pairs.enableCharacters": ["(", "[", "{", "'", "\"", "`"],
   "diagnostic.errorSign": "🔥",
   "diagnostic.warningSign": "🦄",
-  "diagnostic.infoSign": "✨"
+  "diagnostic.infoSign": "✨",
+  "rust-analyzer.checkOnSave.command": "clippy"
 }

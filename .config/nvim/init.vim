@@ -261,6 +261,7 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+nnoremap <leader>e :CocList diagnostics<CR>
 
 " COC AUTO COMPLETE SUGGESTION WITH <TAB> ***************************
 function! s:check_back_space() abort
