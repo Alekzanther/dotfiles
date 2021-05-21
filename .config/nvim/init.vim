@@ -261,6 +261,7 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+nnoremap <leader>e :CocList diagnostics<CR>
 
 " COC AUTO COMPLETE SUGGESTION WITH <TAB> ***************************
 function! s:check_back_space() abort
@@ -272,6 +273,16 @@ inoremap <silent><expr> <Tab>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<Tab>" :
       \ coc#refresh()
+" COC show info under cursor by pressing t
+nnoremap <silent> T :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
 
 " START SCREEN *******************
 let g:startify_lists = [
