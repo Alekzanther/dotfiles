@@ -214,9 +214,11 @@ function! OnTermExit(job_id, code, event) dict
     endif
 endfunction
 
-" Cool programs started in floting window
-nnoremap <silent> <F1> :call ToggleTerm('lazygit')<CR> i
-nnoremap <silent> <F2> :call ToggleTerm('ytop')<CR> i
+" lazygit 
+nnoremap <Leader>g :call ToggleTerm('lazygit')<CR> i
+" CocDiagnostics 
+nnoremap <C-c> :CocDiagnostics<CR>
+
 " RIPGREP ************************
 set grepprg=rg\ --vimgrep\ --smart-case\ --follow
 nnoremap <A-f> :Rg<CR>
