@@ -218,6 +218,8 @@ endfunction
 nnoremap <Leader>g :call ToggleTerm('lazygit')<CR> i
 " CocDiagnostics 
 nnoremap <C-c> :CocDiagnostics<CR>
+" CocQuickFix 
+nnoremap <C-M> :call CocActionAsync('doQuickfix')<CR>
 
 " RIPGREP ************************
 set grepprg=rg\ --vimgrep\ --smart-case\ --follow
