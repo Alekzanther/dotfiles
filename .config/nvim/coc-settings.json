@@ -36,6 +36,7 @@
     "typescriptreact"
   ],
   "eslint.enable": true,
+  "eslint.autoFixOnSave": true,
   "pairs.enableCharacters": ["(", "[", "{", "'", "\"", "`"],
   "diagnostic.errorSign": "🔥",
   "diagnostic.warningSign": "🦄",
