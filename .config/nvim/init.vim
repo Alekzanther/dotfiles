@@ -24,6 +24,7 @@ call plug#begin("~/.vim/plugged")
   Plug 'vim-airline/vim-airline-themes'
   Plug 'thaerkh/vim-workspace'
   Plug 'tpope/vim-surround'
+  Plug 'TamaMcGlinn/quickfixdd' "remove qf items with dd
 call plug#end()
 
 " *******************************
