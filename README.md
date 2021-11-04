@@ -8,8 +8,8 @@ No-hassle backups/migrations/restore/tracking of such files.
 - OhMyZsh: https://ohmyz.sh/
 - NeoVim: https://neovim.io/
 - vim-plug: https://github.com/junegunn/vim-plug
-- Zinit (zsh plugin manager): https://github.com/zdharma/zinit
-- MesloLGS NF Font (Set this as default in your terminal app): https://github.com/romkatv/powerlevel10k#manual-font-installation
+- Zinit (zsh plugin manager): https://github.com/zdharma-continuum/zinit
+- Firacode NF Font (Set this as default in your terminal app): https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/FiraCode
 
 ## Install these on a new system
 Based on https://www.atlassian.com/git/tutorials/dotfiles
