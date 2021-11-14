@@ -9,6 +9,7 @@ No-hassle backups/migrations/restore/tracking of such files.
 - NeoVim: https://neovim.io/
 - vim-plug: https://github.com/junegunn/vim-plug
 - Zinit (zsh plugin manager): https://github.com/zdharma-continuum/zinit
+- fzf, bat, ripgrep
 - Firacode NF Font (Set this as default in your terminal app): https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/FiraCode
 
 ## Install these on a new system
