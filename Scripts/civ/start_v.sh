@@ -1,3 +1,3 @@
 #!/bin/bash
 
-`dirname $0`/start_civ5.sh 30.4
+`dirname $0`/start_civ5.sh 30.2
