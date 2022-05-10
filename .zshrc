@@ -96,7 +96,7 @@ export LC_NUMERIC="sv_SE.UTF-8"
 export LC_TIME="sv_SE.UTF-8"
 export LC_COLLATE="sv_SE.UTF-8"
 export LC_MONETARY="sv_SE.UTF-8"
-export LC_MESSAGES="sv_SE.UTF-8"
+export LC_MESSAGES="en_US.UTF-8"
 export LC_PAPER="sv_SE.UTF-8"
 export LC_NAME="sv_SE.UTF-8"
 export LC_ADDRESS="sv_SE.UTF-8"
@@ -157,3 +157,4 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
 alias @powershell=pwsh
+eval "$(fnm env --use-on-cd)"
