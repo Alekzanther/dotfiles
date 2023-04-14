@@ -22,7 +22,6 @@ local plugins = {
     end, -- Override to setup mason-lspconfig
   },
 
-  -- override plugin configs
   {
     "williamboman/mason.nvim",
     opts = overrides.mason
@@ -32,26 +31,22 @@ local plugins = {
     "nvim-treesitter/nvim-treesitter",
     opts = overrides.treesitter,
   },
-
+  {
+    "nvim-treesitter/nvim-treesitter-context",
+    lazy = false,
+  },
   {
     "nvim-tree/nvim-tree.lua",
     opts = overrides.nvimtree,
   },
-
-  -- Install a plugin
   {
-    "max397574/better-escape.nvim",
-    event = "InsertEnter",
-    config = function()
-      require("better_escape").setup()
-    end,
+    "tpope/vim-surround",
+    lazy = false,
   },
-
-  -- To make a plugin not be loaded
-  -- {
-  --   "NvChad/nvim-colorizer.lua",
-  --   enabled = false
-  -- },
+  {
+    "theprimeagen/harpoon",
+    lazy = false,
+  },
 
 }
 
