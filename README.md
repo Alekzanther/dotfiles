@@ -1,10 +1,4 @@
-## What is this? 
-My configuration files.
-
-## Why? 
-No-hassle backups/migrations/restore/tracking of such files.
-
-### Applications / dependencies (in order of installation)
+## Applications / dependencies (in order of installation)
 - Zsh
 - OhMyZsh: https://ohmyz.sh/
 - NeoVim: https://neovim.io/
