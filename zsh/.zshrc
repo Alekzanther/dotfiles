@@ -84,6 +84,7 @@ alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias vim=nvim
 alias nano=nvim
 alias lg=lazygit
+alias nvimcfg='cd ~/.config/nvim/lua/custom && nvim .' 
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
