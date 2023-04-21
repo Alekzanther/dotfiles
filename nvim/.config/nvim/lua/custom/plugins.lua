@@ -47,6 +47,10 @@ local plugins = {
     "theprimeagen/harpoon",
     lazy = false,
   },
+  {
+    "github/copilot.vim",
+    lazy = false,
+  }
 
 }
 
