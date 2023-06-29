@@ -33,6 +33,7 @@ M.mason = {
     "typescript-language-server",
     "deno",
     "eslint_d",
+    "prettierd",
 
     -- system stuff
     "rust-analyser",
