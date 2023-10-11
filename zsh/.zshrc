@@ -86,6 +86,7 @@ alias vim=nvim
 alias nano=nvim
 alias lg=lazygit
 alias nvimcfg='cd ~/.config/nvim/lua/custom && nvim .' 
+alias reload='source ~/.zshrc' 
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
