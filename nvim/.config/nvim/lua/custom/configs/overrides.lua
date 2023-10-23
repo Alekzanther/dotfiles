@@ -56,6 +56,9 @@ M.nvimtree = {
       },
     },
   },
+  view = {
+    relativenumber = true,
+  }
 }
 
 M.copilot = {
