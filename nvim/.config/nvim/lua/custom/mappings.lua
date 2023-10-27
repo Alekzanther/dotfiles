@@ -14,6 +14,7 @@ M.general = {
     ["<leader>dq"] = { ":lua require('trouble').toggle('quickfix') <CR>", "QuickfixList Trouble", opts = { nowait = true } },
     ["<leader>s"] = { [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], "Replace inner word", opts = { nowait = true } },
     ["<C-p>"] = { 'copilot#Accept("<CR>")', "Copilot accept", opts = { expr = true, silent = true, replace_keycodes = false } },
+    ["<C-a>"] = { ":ChatGPTEditWithInstructions<CR>", "ChatGPT help", opts = { nowait = true } },
   },
   i = {
     ["<C-p>"] = { 'copilot#Accept("<CR>")', "Copilot accept", opts = { expr = true, silent = true, replace_keycodes = false} },
