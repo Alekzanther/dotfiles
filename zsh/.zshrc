@@ -159,3 +159,11 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 
 alias @powershell=pwsh
 eval "$(fnm env --use-on-cd)"
+
+# bun completions
+[ -s "/home/alexander/.bun/_bun" ] && source "/home/alexander/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+. "$HOME/.cargo/env"
