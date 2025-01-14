@@ -32,8 +32,8 @@ M.mason = {
     "html-lsp",
     "typescript-language-server",
     "deno",
-    "eslint_d",
-    "prettierd",
+    "prettier",
+    "eslint-lsp",
 
     -- system stuff
     "rust-analyser",
@@ -65,10 +65,10 @@ M.copilot = {
   -- Possible configurable fields can be found on:
   -- https://github.com/zbirenbaum/copilot.lua#setup-and-configuration
   suggestion = {
-    enable = false,
+    enable = true,
   },
   panel = {
-    enable = false,
+    enable = true,
   },
 }
 return M
