@@ -84,20 +84,6 @@ local plugins = {
     -- or leave it empty to use the default settings
     -- refer to the configuration section below
   },
-  {
-    "jackMort/ChatGPT.nvim",
-    event = "VeryLazy",
-    config = function()
-      require("chatgpt").setup({
-        api_key_cmd = "bw get notes openAIKey"
-      })
-    end,
-    dependencies = {
-      "MunifTanjim/nui.nvim",
-      "nvim-lua/plenary.nvim",
-      "nvim-telescope/telescope.nvim"
-    }
-  },
 }
 
 return plugins
