@@ -51,7 +51,7 @@ local plugins = {
     "github/copilot.vim",
     lazy = false,
   },
-   {
+  {
     "zbirenbaum/copilot.lua",
     event = "InsertEnter",
     opts = overrides.copilot,
@@ -76,6 +76,27 @@ local plugins = {
         { name = "path",     group_index = 2 },
       },
     },
+  },
+  "folke/trouble.nvim",
+  dependencies = { "nvim-tree/nvim-web-devicons" },
+  opts = {
+    -- your configuration comes here
+    -- or leave it empty to use the default settings
+    -- refer to the configuration section below
+  },
+  {
+    "jackMort/ChatGPT.nvim",
+    event = "VeryLazy",
+    config = function()
+      require("chatgpt").setup({
+        api_key_cmd = "bw get notes openAIKey"
+      })
+    end,
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope.nvim"
+    }
   },
 }
 

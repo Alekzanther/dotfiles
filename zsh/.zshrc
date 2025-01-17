@@ -7,6 +7,7 @@ fi
 
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/.local/bin:$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/.bun/bin:$PATH
 source $HOME/.cargo/env
 
 # Path to your oh-my-zsh installation.
@@ -85,6 +86,7 @@ alias vim=nvim
 alias nano=nvim
 alias lg=lazygit
 alias nvimcfg='cd ~/.config/nvim/lua/custom && nvim .' 
+alias reload='source ~/.zshrc' 
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
