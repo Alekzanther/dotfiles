@@ -13,14 +13,9 @@ local sources = {
   b.formatting.prettier.with { filetypes = { "html", "markdown", "css" } }, -- so prettier works only on these filetypes
   -- b.diagnostics.eslint_d,
 
-  -- Lua
-  b.formatting.stylua,
-
   -- cpp
   b.formatting.clang_format,
 
-  -- rust
-  b.formatting.rustfmt,
 }
 
 null_ls.setup {
