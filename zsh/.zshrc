@@ -8,6 +8,7 @@ fi
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/.local/bin:$HOME/bin:/usr/local/bin:$PATH
 export PATH=$HOME/.bun/bin:$PATH
+export PATH=/snap/bin:$PATH
 source $HOME/.cargo/env
 
 export PATH=$PATH:/usr/local/go/bin
