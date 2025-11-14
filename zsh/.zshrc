@@ -12,6 +12,7 @@ source $HOME/.cargo/env
 
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:~/go/bin
+export PATH=$PATH:~/Scripts
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
