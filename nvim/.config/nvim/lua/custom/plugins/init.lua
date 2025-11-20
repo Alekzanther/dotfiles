@@ -8,6 +8,44 @@ return {
 		"github/copilot.vim",
 		event = "InsertEnter",
 	},
+	-- CopilotChat: Chat with GitHub Copilot in Neovim
+	{
+		"CopilotC-Nvim/CopilotChat.nvim",
+		dependencies = {
+			{ "nvim-lua/plenary.nvim", branch = "master" },
+		},
+		-- build = "make tiktoken", -- Requires 'make', optional for token counting
+		opts = {
+			model = "claude-sonnet-4",
+			window = {
+				layout = "vertical",
+				width = 0.4,
+			},
+		},
+		keys = {
+			-- Chat commands
+			{ "<leader>cc", "<cmd>CopilotChatToggle<cr>", desc = "CopilotChat: Toggle chat window" },
+			{ "<leader>cr", "<cmd>CopilotChatReset<cr>", desc = "CopilotChat: Reset chat" },
+			-- Code actions
+			{ "<leader>ce", "<cmd>CopilotChatExplain<cr>", mode = { "n", "v" }, desc = "CopilotChat: Explain code" },
+			{ "<leader>ct", "<cmd>CopilotChatTests<cr>", mode = { "n", "v" }, desc = "CopilotChat: Generate tests" },
+			{ "<leader>cf", "<cmd>CopilotChatFix<cr>", mode = { "n", "v" }, desc = "CopilotChat: Fix code" },
+			{ "<leader>co", "<cmd>CopilotChatOptimize<cr>", mode = { "n", "v" }, desc = "CopilotChat: Optimize code" },
+			{ "<leader>cd", "<cmd>CopilotChatDocs<cr>", mode = { "n", "v" }, desc = "CopilotChat: Generate docs" },
+			{ "<leader>cv", "<cmd>CopilotChatReview<cr>", mode = { "n", "v" }, desc = "CopilotChat: Review code" },
+			-- Quick chat with selection
+			{
+				"<leader>cq",
+				function()
+					local input = vim.fn.input("Quick Chat: ")
+					if input ~= "" then
+						require("CopilotChat").ask(input, { selection = require("CopilotChat.select").buffer })
+					end
+				end,
+				desc = "CopilotChat: Quick chat",
+			},
+		},
+	},
 	-- nvim-tree: Most popular file tree (8,182+ stars)
 	{
 		"nvim-tree/nvim-tree.lua",
