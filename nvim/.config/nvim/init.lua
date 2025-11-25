@@ -75,6 +75,9 @@ vim.o.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.o.scrolloff = 20
 
+-- Disable line wrapping
+vim.o.wrap = false
+
 -- if performing an operation that would fail due to unsaved changes in the buffer (like `:q`),
 -- instead raise a dialog asking if you wish to save the current file(s)
 -- See `:help 'confirm'`
@@ -837,10 +840,20 @@ require("lazy").setup({
 
 			-- Add/delete/replace surroundings (brackets, quotes, etc.)
 			--
-			-- - saiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
-			-- - sd'   - [S]urround [D]elete [']quotes
-			-- - sr)'  - [S]urround [R]eplace [)] [']
-			require("mini.surround").setup()
+			-- - gsaiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
+			-- - gsd'   - [S]urround [D]elete [']quotes
+			-- - gsr)'  - [S]urround [R]eplace [)] [']
+			require("mini.surround").setup({
+				mappings = {
+					add = "gsa", -- Add surrounding in Normal and Visual modes
+					delete = "gsd", -- Delete surrounding
+					find = "gsf", -- Find surrounding (to the right)
+					find_left = "gsF", -- Find surrounding (to the left)
+					highlight = "gsh", -- Highlight surrounding
+					replace = "gsr", -- Replace surrounding
+					update_n_lines = "gsn", -- Update `n_lines`
+				},
+			})
 
 			-- Simple and easy statusline.
 			--  You could remove this setup call if you don't like it,
