@@ -9,7 +9,6 @@ fi
 export PATH=$HOME/.local/bin:$HOME/bin:/usr/local/bin:$PATH
 export PATH=$HOME/.bun/bin:$PATH
 export PATH=/snap/bin:$PATH
-source $HOME/.cargo/env
 
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:~/go/bin
@@ -162,16 +161,12 @@ export FZF_DEFAULT_COMMAND="rg --files --hidden --follow --glob '!.git'"
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
-alias @powershell=pwsh
-eval "$(fnm env --use-on-cd)"
-
 # bun completions
 [ -s "/home/alexander/.bun/_bun" ] && source "/home/alexander/.bun/_bun"
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
-. "$HOME/.cargo/env"
 
 # fnm
 FNM_PATH="/home/alexander/.local/share/fnm"
@@ -179,3 +174,6 @@ if [ -d "$FNM_PATH" ]; then
   export PATH="$FNM_PATH:$PATH"
   eval "`fnm env`"
 fi
+
+alias @powershell=pwsh
+eval "$(fnm env --use-on-cd)"
