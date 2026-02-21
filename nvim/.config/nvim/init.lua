@@ -814,11 +814,13 @@ require("lazy").setup({
 		-- change the command in the config to whatever the name of that colorscheme is.
 		--
 		-- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
-		"phha/zenburn.nvim",
+		"folke/tokyonight.nvim",
 		priority = 1000, -- Make sure to load this before all the other start plugins.
 		config = function()
-			require("zenburn").setup()
-			vim.cmd.colorscheme("zenburn")
+			require("tokyonight").setup({
+				style = "night",
+			})
+			vim.cmd.colorscheme("tokyonight")
 		end,
 	},
 
