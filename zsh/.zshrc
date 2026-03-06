@@ -177,3 +177,6 @@ fi
 
 alias @powershell=pwsh
 eval "$(fnm env --use-on-cd)"
+
+# opencode
+export PATH=~/.opencode/bin:$PATH
