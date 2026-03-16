@@ -180,3 +180,7 @@ eval "$(fnm env --use-on-cd)"
 
 # opencode
 export PATH=~/.opencode/bin:$PATH
+
+
+# direnv
+eval "$(direnv hook zsh)"
