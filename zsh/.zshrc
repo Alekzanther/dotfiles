@@ -182,8 +182,5 @@ eval "$(fnm env --use-on-cd)"
 export PATH=~/.opencode/bin:$PATH
 
 
-# GitHub token for Claude Code MCP plugin
-export GITHUB_PERSONAL_ACCESS_TOKEN="$(gh auth token)"
-
 # direnv
 eval "$(direnv hook zsh)"
