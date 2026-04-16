@@ -91,6 +91,7 @@ alias nano=nvim
 alias lg=lazygit
 alias nvimcfg='cd ~/.config/nvim/lua/custom && nvim .' 
 alias reload='source ~/.zshrc' 
+alias wild_claude='claude --permission-mode bypassPermissions'
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
