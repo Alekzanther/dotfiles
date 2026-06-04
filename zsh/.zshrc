@@ -185,3 +185,6 @@ export PATH=~/.opencode/bin:$PATH
 
 # direnv
 eval "$(direnv hook zsh)"
+
+# Load secrets (API keys, tokens) — kept out of version control
+[ -f ~/.secrets ] && source ~/.secrets
