@@ -1,0 +1,6 @@
+# kitty: machine-local session snapshot.
+# Saved by ctrl+shift+s (save_as_session). Contains per-machine cwd paths
+# (git worktrees, project dirs) that don't exist on other machines, so it's
+# transient local state — not shared config. startup_session in kitty.conf
+# restores it on launch. See kitty.conf for the binding.
+kitty/.config/kitty/last.session
