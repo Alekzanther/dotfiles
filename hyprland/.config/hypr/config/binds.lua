@@ -95,6 +95,10 @@ hl.bind(mainMod .. " + V", hl.dsp.exec_cmd(noctCall .. "panel-toggle clipboard")
 -- Notifications
 hl.bind(mainMod .. " + A", hl.dsp.exec_cmd(noctCall .. "panel-toggle control-center notifications"))
 
+-- Keyboard layout (us <-> se). The per-window daemon in autostart.lua remembers
+-- the choice per window. Avoid plain ALT+L here: zellij binds it (config.kdl).
+hl.bind(mainMod .. " + ALT + L", hl.dsp.exec_cmd("hyprctl switchxkblayout all next"))
+
 -------------------------------
 ---- WORKSPACES & MONITORS ----
 -------------------------------

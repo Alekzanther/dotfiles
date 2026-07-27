@@ -4,6 +4,8 @@ hl.config({
     input = {
         -- sensitivity = -0.25,
         accel_profile = "flat",
+        -- us first: new windows default to layout 0 (see binds.lua + autostart.lua).
+        kb_layout = "us,se",
     },
     -- Uncomment the section below to enable software cursors; this can help with cursor display or behavior issues
     -- cursor = {

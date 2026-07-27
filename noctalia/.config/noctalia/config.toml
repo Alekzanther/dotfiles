@@ -15,7 +15,7 @@ thickness = 35
     border = ""
     fill = "on_secondary"
     id = "g1"
-    members = [ "temp", "sysmon_2", "sysmon_3" ]
+    members = [ "temp", "sysmon_2", "sysmon_3", "keyboard_layout" ]
     opacity = 1.0
     padding = 6.0
 
@@ -86,6 +86,10 @@ wallpaper_scheme = "m3-tonal-spot"
 [widget.clock]
 color = "secondary"
 format = "{:%H:%M %A %m/%d/%y}"
+
+[widget.keyboard_layout]
+hide_when_single_layout = false
+type = "keyboard_layout"
 
 [widget.launcher]
 color = "secondary"
