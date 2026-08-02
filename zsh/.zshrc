@@ -61,3 +61,10 @@ command -v direnv >/dev/null && eval "$(direnv hook zsh)"
 
 # --- Secrets (API keys, tokens) — never committed ---
 [ -f ~/.secrets ] && source ~/.secrets
+
+# fnm
+FNM_PATH="/home/alexander/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="$FNM_PATH:$PATH"
+  eval "$(fnm env --shell zsh)"
+fi
