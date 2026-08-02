@@ -8,6 +8,10 @@ hl.config({
         kb_layout = "us,se",
         -- Caps Lock acts as Escape (no Caps Lock toggle remains).
         kb_options = "caps:escape",
+        touchpad = {
+            -- Content follows the fingers, macOS-style.
+            natural_scroll = true,
+        },
     },
     -- Uncomment the section below to enable software cursors; this can help with cursor display or behavior issues
     -- cursor = {
