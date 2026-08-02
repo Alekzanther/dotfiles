@@ -6,6 +6,8 @@ hl.config({
         accel_profile = "flat",
         -- us first: new windows default to layout 0 (see binds.lua + autostart.lua).
         kb_layout = "us,se",
+        -- Caps Lock acts as Escape (no Caps Lock toggle remains).
+        kb_options = "caps:escape",
     },
     -- Uncomment the section below to enable software cursors; this can help with cursor display or behavior issues
     -- cursor = {

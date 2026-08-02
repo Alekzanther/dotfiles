@@ -1,6 +1,6 @@
 [bar.default]
 center = [ "clock" ]
-end = [ "media", "spacer_1", "group:g1", "tray", "notifications", "network", "volume", "session" ]
+end = [ "media", "spacer_1", "group:g1", "tray", "notifications", "network", "volume", "battery", "session" ]
 margin_edge = 0
 margin_ends = 0
 radius_bottom_left = -10
@@ -15,7 +15,7 @@ thickness = 35
     border = ""
     fill = "on_secondary"
     id = "g1"
-    members = [ "temp", "sysmon_2", "sysmon_3", "keyboard_layout" ]
+    members = [ "cpu", "keyboard_layout" ]
     opacity = 1.0
     padding = 6.0
 
@@ -83,9 +83,18 @@ wallpaper_scheme = "m3-tonal-spot"
     [theme.templates]
     builtin_ids = [ "btop", "gtk3", "gtk4", "kcolorscheme", "kitty", "qt", "alacritty" ]
 
+[widget.battery]
+color = "secondary"
+device = "auto"
+display_mode = "graphic"
+label_content = "percent"
+show_label = true
+type = "battery"
+warning_color = "error"
+
 [widget.clock]
 color = "secondary"
-format = "{:%H:%M %A %m/%d/%y}"
+format = "{:%H:%M %A %Y-%m-%d}"
 
 [widget.keyboard_layout]
 hide_when_single_layout = false
@@ -100,6 +109,7 @@ title_scroll = "on_hover"
 
 [widget.network]
 color = "secondary"
+show_label = false
 
 [widget.notifications]
 color = "secondary"
@@ -110,18 +120,10 @@ color = "error"
 [widget.spacer_1]
 type = "spacer"
 
-[widget.temp]
-show_label = false
-
-[widget.sysmon_2]
-glyph = "gpu-usage"
-show_label = false
-stat = "gpu_temp"
-type = "sysmon"
-
-[widget.sysmon_3]
+[widget.cpu]
 glyph = "cpu-2"
-stat = "ram_used"
+show_label = false
+stat = "cpu_usage"
 type = "sysmon"
 
 [widget.tray]
