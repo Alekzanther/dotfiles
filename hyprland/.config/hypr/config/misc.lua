@@ -9,7 +9,9 @@ hl.config({
         middle_click_paste = false,
         enable_swallow = true,
         swallow_regex = "(kitty|ghostty|[Kk]onsole|Alacritty|gnome-terminal|xfce[0-9]?-terminal)",
-        vrr = 2,
+        -- 3 = fullscreen_game: only fullscreen clients that tag their content type.
+        -- Avoids the blank-screen mode switch when e.g. an image viewer goes fullscreen.
+        vrr = 3,
     },
     xwayland = {
         force_zero_scaling = true
