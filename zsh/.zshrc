@@ -10,7 +10,7 @@
 
 # Extra oh-my-zsh plugins. Set before CachyOS sources OMZ (it only defaults
 # these when unset). No output here, so it's safe above the instant prompt.
-plugins=(git docker docker-compose node npm rust cp sudo systemd)
+plugins=(git docker docker-compose dotnet node npm rust cp sudo systemd)
 
 # --- CachyOS base (instant prompt, OMZ, p10k, fish-like plugins, arch aliases) ---
 [ -f /usr/share/cachyos-zsh-config/cachyos-config.zsh ] && \
@@ -25,6 +25,29 @@ export PATH="/snap/bin:$PATH"
 # --- Environment ---
 export LANG=en_US.UTF-8
 export EDITOR=nvim
+
+# Swedish formats (dates, numbers, paper, week start), English messages.
+#
+# LC_ALL overrides every LC_* category, so it must not be set — the old config
+# exported `LC_ALL=en_US.UTF-8`, which silently defeated all of the sv_SE values
+# below. Unset it here too: shells launched from a process that still carries the
+# old value (long-lived terminals, tmux, ssh) inherit it otherwise.
+unset LC_ALL
+#
+# On CachyOS /etc/locale.conf already sets these same values system-wide, so the
+# exports are a portable fallback for hosts without it. Needs sv_SE.UTF-8 to be
+# generated — check with `locale -a | grep sv_SE`.
+export LC_NUMERIC=sv_SE.UTF-8
+export LC_TIME=sv_SE.UTF-8
+export LC_COLLATE=sv_SE.UTF-8
+export LC_MONETARY=sv_SE.UTF-8
+export LC_PAPER=sv_SE.UTF-8
+export LC_NAME=sv_SE.UTF-8
+export LC_ADDRESS=sv_SE.UTF-8
+export LC_TELEPHONE=sv_SE.UTF-8
+export LC_MEASUREMENT=sv_SE.UTF-8
+export LC_IDENTIFICATION=sv_SE.UTF-8
+export LC_MESSAGES=en_US.UTF-8
 
 # --- Aliases ---
 alias vim=nvim
@@ -61,10 +84,3 @@ command -v direnv >/dev/null && eval "$(direnv hook zsh)"
 
 # --- Secrets (API keys, tokens) — never committed ---
 [ -f ~/.secrets ] && source ~/.secrets
-
-# fnm
-FNM_PATH="/home/alexander/.local/share/fnm"
-if [ -d "$FNM_PATH" ]; then
-  export PATH="$FNM_PATH:$PATH"
-  eval "$(fnm env --shell zsh)"
-fi
