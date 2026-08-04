@@ -73,6 +73,14 @@ paru -S kwin-effect-rounded-corners-git   # github.com/matinlotfali/KDE-Rounded-
 kwriteconfig6 --file kwinrc --group Plugins --key kwin4_effect_shapecornersEnabled true
 kwriteconfig6 --file kwinrc --group Round-Corners --key Size 10
 kwriteconfig6 --file kwinrc --group Round-Corners --key InactiveCornerRadius 10
+
+# Drop the outlines the effect draws by default (black, plus a white second one).
+# The Inactive* variants matter too, or unfocused windows keep their borders.
+for k in OutlineThickness SecondOutlineThickness OuterOutlineThickness; do
+  kwriteconfig6 --file kwinrc --group Round-Corners --key "$k" 0
+  kwriteconfig6 --file kwinrc --group Round-Corners --key "Inactive$k" 0
+done
+
 qdbus6 org.kde.KWin /Effects org.kde.kwin.Effects.loadEffect kwin4_effect_shapecorners
 ```
 
