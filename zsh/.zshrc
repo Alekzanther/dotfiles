@@ -82,5 +82,18 @@ export PATH="$HOME/.opencode/bin:$PATH"
 # --- direnv ---
 command -v direnv >/dev/null && eval "$(direnv hook zsh)"
 
+# --- Cloud CLIs ---
+# hcloud needs nothing here: the Arch package installs a native zsh completion
+# at /usr/share/zsh/site-functions/_hcloud, already on the default fpath.
+#
+# azure-cli only ships a *bash* completion, so it needs bashcompinit (which must
+# run after compinit — OMZ does that in the CachyOS base sourced above). Don't
+# use /opt/azure-cli/bin/az.completion.sh: it calls register-python-argcomplete,
+# which lives in /opt/azure-cli/bin and is not on PATH.
+if [ -f /usr/share/bash-completion/completions/az ]; then
+  autoload -Uz bashcompinit && bashcompinit
+  source /usr/share/bash-completion/completions/az
+fi
+
 # --- Secrets (API keys, tokens) — never committed ---
 [ -f ~/.secrets ] && source ~/.secrets
