@@ -26,27 +26,33 @@ export PATH="/snap/bin:$PATH"
 export LANG=en_US.UTF-8
 export EDITOR=nvim
 
-# Swedish formats (dates, numbers, paper, week start), English messages.
+# Swedish formats (dates, numbers, paper, week start) with English month and day
+# names — that is exactly what the en_SE locale is: English language, Sweden
+# territory, with LC_NUMERIC copied from sv_SE. Do not use sv_SE here; it would
+# also translate the names.
 #
 # LC_ALL overrides every LC_* category, so it must not be set — the old config
-# exported `LC_ALL=en_US.UTF-8`, which silently defeated all of the sv_SE values
-# below. Unset it here too: shells launched from a process that still carries the
-# old value (long-lived terminals, tmux, ssh) inherit it otherwise.
+# exported `LC_ALL=en_US.UTF-8`, which silently defeated all of the values below.
+# Unset it here too: shells launched from a process that still carries the old
+# value (long-lived terminals, tmux, ssh) inherit it otherwise.
 unset LC_ALL
 #
-# On CachyOS /etc/locale.conf already sets these same values system-wide, so the
-# exports are a portable fallback for hosts without it. Needs sv_SE.UTF-8 to be
-# generated — check with `locale -a | grep sv_SE`.
-export LC_NUMERIC=sv_SE.UTF-8
-export LC_TIME=sv_SE.UTF-8
-export LC_COLLATE=sv_SE.UTF-8
-export LC_MONETARY=sv_SE.UTF-8
-export LC_PAPER=sv_SE.UTF-8
-export LC_NAME=sv_SE.UTF-8
-export LC_ADDRESS=sv_SE.UTF-8
-export LC_TELEPHONE=sv_SE.UTF-8
-export LC_MEASUREMENT=sv_SE.UTF-8
-export LC_IDENTIFICATION=sv_SE.UTF-8
+# On this machine /etc/locale.conf already sets these same values system-wide, so
+# the exports are a portable fallback for hosts without it. en_SE.UTF-8 must be
+# generated or every category silently falls back to C — an uncommented line in
+# /etc/locale.gen is not enough, `locale-gen` has to have been run since. Check
+# with `locale -a | grep en_SE`.
+export LC_NUMERIC=en_SE.UTF-8
+export LC_TIME=en_SE.UTF-8
+export LC_MONETARY=en_SE.UTF-8
+export LC_PAPER=en_SE.UTF-8
+export LC_NAME=en_SE.UTF-8
+export LC_ADDRESS=en_SE.UTF-8
+export LC_TELEPHONE=en_SE.UTF-8
+export LC_MEASUREMENT=en_SE.UTF-8
+export LC_IDENTIFICATION=en_SE.UTF-8
+# en_SE copies the generic iso14651_t1 collation, so leave LC_COLLATE alone and
+# let LANG drive it rather than pinning a value that changes nothing.
 export LC_MESSAGES=en_US.UTF-8
 
 # --- Aliases ---
