@@ -13,6 +13,18 @@ hl.config({
         -- Avoids the blank-screen mode switch when e.g. an image viewer goes fullscreen.
         vrr = 3,
     },
+    cursor = {
+        -- Auto disables hardware cursors whenever two GPUs are registered, which is
+        -- always the case on this hybrid laptop even when only the iGPU drives outputs.
+        -- Without this, every cursor move forces a full recomposite of the 4K external.
+        no_hardware_cursors = 0,
+    },
+    render = {
+        -- 2 = auto: let fullscreen clients bypass compositing. Default 0 blocked it
+        -- outright (monitors reported directScanoutBlockedBy: user settings).
+        direct_scanout = 2,
+        new_render_scheduling = true,
+    },
     xwayland = {
         force_zero_scaling = true
     },
