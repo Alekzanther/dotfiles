@@ -14,16 +14,16 @@ hl.monitor({
     scale     = "auto",
 })
 
--- Externals sit to the LEFT of the laptop, so they get negative X (auto-left
+-- Externals sit to the RIGHT of the laptop, so they get positive X (auto-right
 -- places them relative to the already-declared MONITOR1 — keep after that block).
 -- Only one external is ever plugged in; the rule for the absent one is inert.
-for _, mon in ipairs({ MONITOR2, MONITOR3 }) do
-    if mon ~= "" then
+for _, ext in ipairs(EXTERNALS) do
+    if ext.monitor ~= "" then
         hl.monitor({
-            output    = mon,
-            mode      = "preferred",
-            position  = "auto-left",
-            scale     = "auto",
+            output    = ext.monitor,
+            mode      = ext.mode or "preferred",
+            position  = "auto-right",
+            scale     = ext.scale or "auto",
         })
     end
 end

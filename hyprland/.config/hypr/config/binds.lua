@@ -105,7 +105,7 @@ hl.bind(mainMod .. " + ALT + L", hl.dsp.exec_cmd("hyprctl switchxkblayout all ne
 
 -- Workspaces are pinned to monitors (see workspaces.lua), so SUPER + N focuses
 -- workspace N wherever it lives — which jumps focus to that monitor when needed.
--- NUM_WS = NUM_WPM x connected monitors (e.g. eDP-1: 1-3, HDMI-A-1: 4-6).
+-- NUM_WS is the highest workspace number in WS_LAYOUT (see variables.lua).
 for i = 1, NUM_WS do
     local key = i % 10
     hl.bind(mainMod .. " + " .. key, hl.dsp.focus({ workspace = i }))
