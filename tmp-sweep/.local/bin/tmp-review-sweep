@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+# Deletes agent review copies in /tmp (pr123-*, pr-123-*, pd123-*, pd-123-*) when
+# nothing inside them has been created or modified for MAX_AGE_DAYS (default 2)
+# and no process has them open. A directory containing a .keep file is never
+# deleted. Pass --dry-run to only list what would be removed.
+set -u
+
+max_age_days=${MAX_AGE_DAYS:-2}
+dry_run=0
+[ "${1:-}" = --dry-run ] && dry_run=1
+
+# Paths under /tmp that any process has as cwd, open fd or mapped file.
+open_paths=$(
+  for p in /proc/[0-9]*; do
+    readlink "$p/cwd" "$p"/fd/* 2>/dev/null
+    awk '{print $6}' "$p/maps" 2>/dev/null
+  done | grep '^/tmp/' | sort -u
+)
+
+shopt -s nullglob
+for d in /tmp/pr[0-9]* /tmp/pr-[0-9]* /tmp/pd[0-9]* /tmp/pd-[0-9]*; do
+  [ -d "$d" ] && [ ! -L "$d" ] && [ -O "$d" ] || continue
+  [ -e "$d/.keep" ] && continue
+  # ctime, not mtime: copies made with git archive or cp -a keep old mtimes.
+  [ -n "$(find "$d" -newerct "$max_age_days days ago" -print -quit 2>/dev/null)" ] && continue
+  if grep -qF -- "$d/" <<<"$open_paths" || grep -qxF -- "$d" <<<"$open_paths"; then
+    echo "skip (open): $d"
+    continue
+  fi
+  size=$(du -sh -- "$d" 2>/dev/null | cut -f1)
+  if [ "$dry_run" = 1 ]; then
+    echo "would remove: $d ($size)"
+  else
+    rm -rf -- "$d" && echo "removed: $d ($size)"
+  fi
+done
+df -h /tmp | tail -1

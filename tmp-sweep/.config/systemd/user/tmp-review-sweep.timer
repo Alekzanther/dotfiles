@@ -1,0 +1,10 @@
+[Unit]
+Description=Daily sweep of stale agent review copies in /tmp
+
+[Timer]
+OnCalendar=daily
+Persistent=true
+RandomizedDelaySec=15min
+
+[Install]
+WantedBy=timers.target

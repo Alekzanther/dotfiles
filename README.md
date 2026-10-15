@@ -13,6 +13,7 @@ under `$HOME`.
 | `kitty` | `~/.config/kitty` | Powerline tabs + cwd-acronym titles. Colors come from Noctalia's dynamic theming (`current-theme.conf` is gitignored/machine-local). |
 | `hyprland` | `~/.config/hypr` | CachyOS/Noctalia **Lua** config. Edit keybinds in `config/binds.lua`, apps/monitors in `config/variables.lua`. |
 | `noctalia` | `~/.config/noctalia/config.toml` | Hand-written layer only. GUI overrides + generated themes live in `~/.local/state/noctalia` and are **not** tracked. |
+| `tmp-sweep` | `~/.local/bin/tmp-review-sweep`, `~/.config/systemd/user/tmp-review-sweep.{service,timer}` | Daily user timer that deletes agent review copies (`/tmp/pr*`, `/tmp/pd*`) unchanged for 2 days and not open. A `.keep` file inside a dir protects it. After stowing: `systemctl --user enable --now tmp-review-sweep.timer`. |
 
 `i3`, `zellij`, `scripts` are legacy/optional and not installed by default.
 

@@ -1,0 +1,8 @@
+[Unit]
+Description=Delete stale agent review copies from /tmp
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/tmp-review-sweep
+Nice=19
+IOSchedulingClass=idle
