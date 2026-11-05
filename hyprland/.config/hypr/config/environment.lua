@@ -20,3 +20,16 @@ if not os.getenv("AQ_DRM_DEVICES") and IGPU_CARD and DGPU_CARD then
     end
     hl.env("AQ_DRM_DEVICES", "/dev/dri/" .. first .. ":/dev/dri/" .. second)
 end
+
+-- Session variables. These used to live in ~/.config/uwsm/env, which this session never
+-- reads (no UWSM), so they silently did nothing: Qt apps fell back to an unthemed Fusion.
+-- QT_QPA_PLATFORMTHEME=qt6ct is what Noctalia's Qt/KColorScheme templates rely on
+-- (https://docs.noctalia.dev/noctalia/templates/official/gtk-qt/).
+hl.env("QT_QPA_PLATFORM", "wayland;xcb")
+hl.env("QT_QPA_PLATFORMTHEME", "qt6ct")
+hl.env("ELECTRON_OZONE_PLATFORM_HINT", "auto")
+hl.env("BROWSER", "com.google.Chrome") -- system Flatpak launcher, on PATH via /var/lib/flatpak/exports/bin
+hl.env("HYPRCURSOR_THEME", "Bibata-Modern-Ice")
+hl.env("HYPRCURSOR_SIZE", "24")
+hl.env("XCURSOR_THEME", "Bibata-Modern-Ice")
+hl.env("XCURSOR_SIZE", "24")
