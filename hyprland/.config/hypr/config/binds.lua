@@ -9,7 +9,7 @@ local launchPrefix = "uwsm app -- " -- if you are not using UWSM, make this empt
 -- Window manipulation
 hl.bind(mainMod .. " + Escape",        hl.dsp.exec_cmd("hyprctl kill")) -- click a window to kill it
 hl.bind(mainMod .. " + SHIFT + Q",     hl.dsp.window.close())
-hl.bind(mainMod .. " + SHIFT + Space", hl.dsp.window.float({ action = "toggle" }))
+hl.bind(mainMod .. " + CTRL + F",      hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + M",             hl.dsp.window.fullscreen({ mode = 1 })) -- maximize (keep gaps/bar)
 hl.bind(mainMod .. " + SHIFT + F",     hl.dsp.window.fullscreen())             -- true fullscreen
 hl.bind(mainMod .. " + G",             hl.dsp.layout("togglesplit"))           -- toggle split orientation
