@@ -3,8 +3,9 @@ center = [ "clock" ]
 end = [ "media", "spacer_1", "group:g1", "tray", "notifications", "network", "volume", "battery", "session" ]
 margin_edge = 0
 margin_ends = 0
-radius_bottom_left = -10
-radius_bottom_right = -10
+radius_bottom_left = 10
+radius_bottom_right = 10
+concave_edge_corners = true
 radius_top_left = 0
 radius_top_right = 0
 scale = 1.10
@@ -122,7 +123,7 @@ type = "spacer"
 
 [widget.cpu]
 glyph = "cpu-2"
-show_label = false
+show_value = false
 stat = "cpu_usage"
 type = "sysmon"
 
@@ -137,7 +138,6 @@ color = "secondary"
 active_pill_size = 2.5
 capsule = true
 capsule_fill = "on_primary"
-display = "index"
 inactive_pill_size = 1.0
 pill_scale = 0.80
 
