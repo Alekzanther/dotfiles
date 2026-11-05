@@ -18,3 +18,6 @@ kitty/.config/kitty/*.bak
 
 # noctalia: GUI-managed override + runtime state live in ~/.local/state/noctalia,
 # which is intentionally NOT tracked here. Only the hand-written config.toml is.
+
+# noctalia: dated config.toml backups it writes next to the config before migrating it.
+noctalia/.config/noctalia/*.bak-*
