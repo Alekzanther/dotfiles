@@ -16,18 +16,19 @@ LAPTOP_LOGICAL_WIDTH = 1600
 hl.monitor({
     output    = MONITOR1,
     mode      = "preferred",
-    position  = "0x0",
+    position  = LAPTOP_X .. "x0",
     scale     = 1.6,
 })
 
--- Externals sit to the RIGHT of the laptop, flush with its right edge.
+-- Externals sit to the RIGHT of the laptop, flush with its right edge, unless the entry
+-- has `left_width` (variables.lua): then it takes 0x0 and the laptop moves over.
 -- Only one external is ever plugged in; the rule for the absent one is inert.
 for _, ext in ipairs(EXTERNALS) do
     if ext.monitor ~= "" then
         hl.monitor({
             output    = ext.monitor,
             mode      = ext.mode or "preferred",
-            position  = LAPTOP_LOGICAL_WIDTH .. "x0",
+            position  = ext.left_width and "0x0" or (LAPTOP_X + LAPTOP_LOGICAL_WIDTH) .. "x0",
             scale     = ext.scale or "auto",
         })
     end
@@ -39,7 +40,7 @@ end
 hl.monitor({
     output    = "",
     mode      = "preferred",
-    position  = LAPTOP_LOGICAL_WIDTH .. "x0",
+    position  = (LAPTOP_X + LAPTOP_LOGICAL_WIDTH) .. "x0",
     scale     = "auto",
 })
 

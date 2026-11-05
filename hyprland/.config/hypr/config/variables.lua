@@ -14,6 +14,7 @@ MONITOR1 = "eDP-1"    -- laptop panel (primary)
 MONITOR2 = "desc:Lenovo Group Limited LEN P27u-10 0x52364D54" -- external (office), sits physically right of the laptop
 MONITOR3 = "desc:AOC Q3279WG5B 0x00000D75"                     -- external (home)
 MONITOR4 = "desc:AOC Q32V4WG5 QHPP2HA000413"                   -- external (AOC Q32V4, HDMI)
+MONITOR5 = "desc:Samsung Electric Company U32J59x H4LR800448"   -- external (Samsung U32J59x 4K, HDMI)
 PRIMARY_MONITOR = MONITOR1
 
 -- Render on the NVIDIA dGPU instead of the iGPU when, at login, an external is plugged
@@ -33,15 +34,21 @@ EXTERNAL_WS = 5
 -- that external is plugged in right now. Keep it to the model name: the make and serial
 -- are not always present as plain text.
 -- `mode` and `scale` are optional; they default to "preferred"/"auto" in monitors.lua.
+-- `left_width` puts that panel LEFT of the laptop instead of right; it is the panel's
+-- logical width (pixels / scale), which the laptop is shifted right by.
 -- Do not force 3840x2160@60 on the P27u-10 here: the mode applies and reports as active,
 -- but the panel goes dark, so something downstream of the modeset cannot carry it.
 -- The Q32V4 prefers 60 Hz but its EDID also lists 2560x1440@75.
+-- The U32J59x does 4K60 over HDMI only with an HDMI 2.0-capable cable/input: otherwise its
+-- EDID caps TMDS at 300 MHz and the best it lists is 4K30, which feels laggy. If it ever
+-- drops back to 4K30, use mode = "2560x1440@60", scale = 1, left_width = 2560.
 -- A connected panel that matches none of these still gets a workspace block, pinned by
 -- its connector name, so an unknown screen never caps the workspace numbering.
 EXTERNALS = {
     { monitor = MONITOR2, edid = "LEN P27u-10" },
     { monitor = MONITOR3, edid = "Q3279WG5B" },
     { monitor = MONITOR4, edid = "Q32V4WG5", mode = "2560x1440@75" },
+    { monitor = MONITOR5, edid = "U32J59x", mode = "3840x2160@60", scale = 1.25, left_width = 3840 / 1.25 },
 }
 
 -- Connected panels are read straight from DRM sysfs, not from hyprctl: the config is
@@ -110,12 +117,17 @@ EXTERNAL_ON_DGPU = external_on_dgpu(externals)
 -- The first workspace listed for a monitor becomes that monitor's default.
 WS_LAYOUT = { { monitor = MONITOR1, workspaces = block(1, LAPTOP_WS) } }
 
+-- Derived: consumed by monitors.lua. X of the laptop panel, non-zero when a connected
+-- external sits to its left.
+LAPTOP_X = 0
+
 local next_ws = LAPTOP_WS + 1
 for _, plugged in ipairs(externals) do
     local monitor = plugged.connector
     for _, ext in ipairs(EXTERNALS) do
         if ext.monitor ~= "" and plugged.edid:find(ext.edid, 1, true) then
             monitor = ext.monitor
+            if ext.left_width then LAPTOP_X = ext.left_width end
             break
         end
     end
