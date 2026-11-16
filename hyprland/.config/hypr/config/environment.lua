@@ -28,7 +28,7 @@ end
 hl.env("QT_QPA_PLATFORM", "wayland;xcb")
 hl.env("QT_QPA_PLATFORMTHEME", "qt6ct")
 hl.env("ELECTRON_OZONE_PLATFORM_HINT", "auto")
-hl.env("BROWSER", "com.google.Chrome") -- system Flatpak launcher, on PATH via /var/lib/flatpak/exports/bin
+hl.env("BROWSER", "firefox")
 hl.env("HYPRCURSOR_THEME", "Bibata-Modern-Ice")
 hl.env("HYPRCURSOR_SIZE", "24")
 hl.env("XCURSOR_THEME", "Bibata-Modern-Ice")

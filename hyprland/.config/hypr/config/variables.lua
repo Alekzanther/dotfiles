@@ -2,7 +2,7 @@
 
 TERMINAL     = "kitty"
 FILE_MANAGER = "dolphin"
-BROWSER      = "com.google.Chrome" -- Flatpak launcher, exported on PATH
+BROWSER      = "firefox"
 EDITOR       = "kitty -e nvim"
 CALCULATOR   = "gnome-calculator"
 
