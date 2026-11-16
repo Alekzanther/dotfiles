@@ -1,0 +1,59 @@
+#!/usr/bin/env bash
+# Keeps ~/dotfiles in step with GitHub: fetch, fast-forward, then restow every
+# package that is already installed on this machine, so files added upstream
+# get linked and files removed upstream get unlinked.
+#
+# Never merges, rebases, commits or pushes. If local commits have diverged from
+# origin, or uncommitted edits block the fast-forward, it leaves everything as
+# is and sends one desktop notification (repeated only when the state changes).
+set -uo pipefail
+
+repo=$(cd "${DOTFILES:-$HOME/dotfiles}" && pwd -P) || exit 1
+cd "$repo" || exit 1
+state_dir=${XDG_STATE_HOME:-$HOME/.local/state}/dotfiles-sync
+mkdir -p "$state_dir"
+
+notify() {
+  echo "dotfiles-sync: $1" >&2
+  command -v notify-send >/dev/null && notify-send -a dotfiles-sync "Dotfiles sync" "$1" || true
+}
+
+git fetch --quiet origin || { echo "dotfiles-sync: fetch failed (offline?), will retry" >&2; exit 0; }
+
+before=$(git rev-parse HEAD)
+if ! git merge --ff-only --quiet '@{u}' >/dev/null 2>&1; then
+  ahead=$(git rev-list --count '@{u}..HEAD')
+  behind=$(git rev-list --count 'HEAD..@{u}')
+  key="$before $(git rev-parse '@{u}') $(git status --porcelain | md5sum)"
+  if [ "$(cat "$state_dir/last-warning" 2>/dev/null)" != "$key" ]; then
+    notify "~/dotfiles can't fast-forward ($ahead local, $behind remote commits; local edits may be in the way). Resolve by hand."
+    printf '%s' "$key" >"$state_dir/last-warning"
+  fi
+  exit 0
+fi
+rm -f "$state_dir/last-warning"
+[ "$(git rev-parse HEAD)" = "$before" ] && exit 0
+
+echo "dotfiles-sync: pulled $(git rev-list --count "$before..HEAD") commit(s), now at $(git log -1 --format='%h %s')"
+
+# A package counts as installed when any of its files is reachable from $HOME
+# through stow's symlinks.
+failed=()
+for pkg in */; do
+  pkg=${pkg%/}
+  installed=0
+  while IFS= read -r -d '' f; do
+    if [ "$(readlink -f "$HOME/${f#"$pkg"/}" 2>/dev/null)" = "$repo/$f" ]; then
+      installed=1
+      break
+    fi
+  done < <(find "$pkg" -type f -print0)
+  [ "$installed" = 1 ] || continue
+  stow --restow --dir "$repo" --target "$HOME" "$pkg" || failed+=("$pkg")
+done
+
+systemctl --user daemon-reload 2>/dev/null || true
+
+if [ "${#failed[@]}" -gt 0 ]; then
+  notify "Pulled new dotfiles, but restowing failed for: ${failed[*]} (a real file is probably in the way). Run: cd ~/dotfiles && stow -R -t ~ ${failed[*]}"
+fi

@@ -1,0 +1,7 @@
+[Unit]
+Description=Fast-forward ~/dotfiles from GitHub and restow installed packages
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/dotfiles-sync
+Nice=10

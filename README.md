@@ -14,6 +14,7 @@ under `$HOME`.
 | `hyprland` | `~/.config/hypr` | CachyOS/Noctalia **Lua** config. Edit keybinds in `config/binds.lua`, apps/monitors in `config/variables.lua`. |
 | `noctalia` | `~/.config/noctalia/config.toml` | Hand-written layer only. GUI overrides + generated themes live in `~/.local/state/noctalia` and are **not** tracked. |
 | `tmp-sweep` | `~/.local/bin/tmp-review-sweep`, `~/.config/systemd/user/tmp-review-sweep.{service,timer}` | Daily user timer that deletes agent review copies (`/tmp/pr*`, `/tmp/pd*`) unchanged for 2 days and not open. A `.keep` file inside a dir protects it. After stowing: `systemctl --user enable --now tmp-review-sweep.timer`. |
+| `dotfiles-sync` | `~/.local/bin/dotfiles-sync`, `~/.config/systemd/user/dotfiles-sync.{service,timer}` | Every 15 min: fetch, fast-forward from origin, then restow the packages already installed on the machine (new files get linked, removed ones unlinked). Never merges, rebases or pushes; if the clone has diverged or local edits block it, it leaves things alone and sends a desktop notification. After stowing: `systemctl --user enable --now dotfiles-sync.timer`. Logs: `journalctl --user -u dotfiles-sync`. |
 
 `i3`, `zellij`, `scripts` are legacy/optional and not installed by default.
 
@@ -32,7 +33,8 @@ cd ~/dotfiles
 
 # If a package's target already exists (fresh CachyOS ships its own hypr/kitty/etc.),
 # move it aside first, e.g.:  mv ~/.config/hypr ~/.config/hypr.bak
-stow -t ~ zsh nvim kitty hyprland noctalia
+stow -t ~ zsh nvim kitty hyprland noctalia dotfiles-sync
+systemctl --user enable --now dotfiles-sync.timer
 
 # Make zsh the login shell if it isn't already:
 chsh -s /usr/bin/zsh
